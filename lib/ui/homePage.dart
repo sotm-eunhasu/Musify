@@ -72,7 +72,8 @@ class AppState extends State<Musify> {
     String filepath;
     String filepath2;
     var status = await Permission.storage.status;
-    if (status.isUndetermined || status.isDenied) {
+    // if (status.isUndetermined || status.isDenied) {
+    if (status.isDenied) {
       // code of read or write file in external storage (SD card)
       // You can request multiple permissions at once.
       Map<Permission, PermissionStatus> statuses = await [
@@ -217,7 +218,7 @@ class AppState extends State<Musify> {
         ),
       ),
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         //backgroundColor: Color(0xff384850),
         bottomNavigationBar: kUrl != ""
@@ -552,7 +553,7 @@ class AppState extends State<Musify> {
       child: Column(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.17,
+            height: MediaQuery.of(context).size.height * 0.1,
             width: MediaQuery.of(context).size.width * 0.4,
             child: Card(
               shape: RoundedRectangleBorder(

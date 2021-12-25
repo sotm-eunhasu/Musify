@@ -23,7 +23,8 @@ Future<List> fetchSongsList(searchQuery) async {
       "https://www.jiosaavn.com/api.php?app_version=5.18.3&api_version=4&readable_version=5.18.3&v=79&_format=json&query=" +
           searchQuery +
           "&__call=autocomplete.get";
-  var res = await http.get(searchUrl, headers: {"Accept": "application/json"});
+  var res = await http
+      .get(Uri.parse(searchUrl), headers: {"Accept": "application/json"});
   var resEdited = (res.body).split("-->");
   var getMain = json.decode(resEdited[1]);
 
@@ -48,8 +49,8 @@ Future<List> fetchSongsList(searchQuery) async {
 Future<List> topSongs() async {
   String topSongsUrl =
       "https://www.jiosaavn.com/api.php?__call=webapi.get&token=8MT-LQlP35c_&type=playlist&p=1&n=20&includeMetaTags=0&ctx=web6dot0&api_version=4&_format=json&_marker=0";
-  var songsListJSON =
-      await http.get(topSongsUrl, headers: {"Accept": "application/json"});
+  var songsListJSON = await http
+      .get(Uri.parse(topSongsUrl), headers: {"Accept": "application/json"});
   var songsList = json.decode(songsListJSON.body);
   topSongsList = songsList["list"];
   for (int i = 0; i < topSongsList.length; i++) {
@@ -74,7 +75,8 @@ Future fetchSongDetails(songId) async {
   String songUrl =
       "https://www.jiosaavn.com/api.php?app_version=5.18.3&api_version=4&readable_version=5.18.3&v=79&_format=json&__call=song.getDetails&pids=" +
           songId;
-  var res = await http.get(songUrl, headers: {"Accept": "application/json"});
+  var res = await http
+      .get(Uri.parse(songUrl), headers: {"Accept": "application/json"});
   var resEdited = (res.body).split("-->");
   var getMain = json.decode(resEdited[1]);
 
@@ -103,8 +105,8 @@ Future fetchSongDetails(songId) async {
         "https://www.jiosaavn.com/api.php?__call=lyrics.getLyrics&lyrics_id=" +
             songId +
             "&ctx=web6dot0&api_version=4&_format=json";
-    var lyricsRes =
-        await http.get(lyricsUrl, headers: {"Accept": "application/json"});
+    var lyricsRes = await http
+        .get(Uri.parse(lyricsUrl), headers: {"Accept": "application/json"});
     var lyricsEdited = (lyricsRes.body).split("-->");
     var fetchedLyrics = json.decode(lyricsEdited[1]);
     lyrics = fetchedLyrics["lyrics"].toString().replaceAll("<br>", "\n");
@@ -112,8 +114,8 @@ Future fetchSongDetails(songId) async {
     lyrics = "null";
     String lyricsApiUrl =
         "https://musifydev.vercel.app/lyrics/" + artist + "/" + title;
-    var lyricsApiRes =
-        await http.get(lyricsApiUrl, headers: {"Accept": "application/json"});
+    var lyricsApiRes = await http
+        .get(Uri.parse(lyricsApiUrl), headers: {"Accept": "application/json"});
     var lyricsResponse = json.decode(lyricsApiRes.body);
     if (lyricsResponse['status'] == true && lyricsResponse['lyrics'] != null) {
       lyrics = lyricsResponse['lyrics'];

@@ -124,7 +124,7 @@ class AboutCards extends StatelessWidget {
                   children: <Widget>[
                     IconButton(
                       icon: Icon(
-                        MdiIcons.telegram,
+                        MdiIcons.send,
                         color: accentLight,
                       ),
                       tooltip: 'Contact on Telegram',
@@ -181,7 +181,7 @@ class AboutCards extends StatelessWidget {
                   children: <Widget>[
                     IconButton(
                       icon: Icon(
-                        MdiIcons.telegram,
+                        MdiIcons.send,
                         color: accentLight,
                       ),
                       tooltip: 'Contact on Telegram',
@@ -238,7 +238,7 @@ class AboutCards extends StatelessWidget {
                   children: <Widget>[
                     IconButton(
                       icon: Icon(
-                        MdiIcons.telegram,
+                        MdiIcons.send,
                         color: accentLight,
                       ),
                       tooltip: 'Contact on Telegram',
@@ -295,7 +295,7 @@ class AboutCards extends StatelessWidget {
                   children: <Widget>[
                     IconButton(
                       icon: Icon(
-                        MdiIcons.telegram,
+                        MdiIcons.send,
                         color: accentLight,
                       ),
                       tooltip: 'Contact on Telegram',
